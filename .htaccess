@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Rotas Amigáveis
+
+# Painel Administrativo
+RewriteRule ^painel/?$ admin/index.php [L]
+RewriteRule ^login/?$ admin/login.php [L]
+RewriteRule ^logout/?$ admin/logout.php [L]
+
+# Proteger arquivos de sistema
+RewriteRule ^(config|includes)/ - [F,L]
+RewriteRule \.sql$ - [F,L]
+
+# Se não for arquivo ou diretório existente, redirecionar para index.php (opcional, para SPA ou rotas dinâmicas futuras)
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
